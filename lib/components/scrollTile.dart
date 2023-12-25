@@ -16,24 +16,36 @@ class ScrollTile extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //title
-                Text(tile.title,
-                  style: const TextStyle(
-                    fontSize: 20
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  //title
+                  Text(tile.title,
+                    style: const TextStyle(
+                      fontSize: 17,
+                          fontWeight: FontWeight.bold
+                    ),
                   ),
-                ),
 
-                //image
-                Image.asset(tile.imagePath),
+                  //image
+                  Center(
+                    child: Image.asset(tile.imagePath,
+                    height: 120,
+                    ),
+                  ),
 
-                //description
-                
-                Text(tile.description)
+                  //description
 
-              ],
+                  Text(tile.description,
+                    style: TextStyle(
+                      color: Colors.grey[700]
+                    ),
+                  )
+
+                ],
+              ),
             )
         ),
       ),

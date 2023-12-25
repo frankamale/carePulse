@@ -30,56 +30,69 @@ class _InsightsState extends State<Insights> {
         ),
       ),
 
-      body:  Padding(
-        //title
-      padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Nutrition', style: TextStyle(
-          fontSize: 20,
-              fontWeight: FontWeight.bold,
-            )
-        ),
-
-            Container(
-              height: 120,
-            ),
-
-            const Text('Stress Relief Techniques', style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            )
-            ),
-
-            //list view for stress relief techniques
-            SizedBox(
-              height: 300,
-              child: ListView.builder(
-                itemCount: item.tileItem.length,
+      body:  SingleChildScrollView(
+        child: Padding(
+          //title
+        padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Nutrition', style: TextStyle(
+            fontSize: 20,
+                fontWeight: FontWeight.bold,
+              )
+          ),
+        
+              //listview for nutrition
+              SizedBox(
+                height: 300,
+                child: ListView.builder(
+                  itemCount: item.nutrition.length,
                   scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return ScrollTile(
-                  tile: Tile(title: item.tileItem[index].title, description: item.tileItem[index].description, imagePath: item.tileItem[index].imagePath),
-                  );
-                },
-               ),
-            ),
-
-
-             // title for recommendations
-
-             const Text('Recommendations', style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            )
-            ),
-
-            //list view for recommendations
-            Container(
-              height: 120,
-            ),
-          ],
+                  itemBuilder: (context, index) {
+                    return ScrollTile(
+                      tile: Tile(title: item.nutrition[index].title, description: item.nutrition[index].description, imagePath: item.nutrition[index].imagePath),
+                    );
+                  },
+                ),
+              ),
+        
+              //title for stress relief techniques
+              const Text('Stress Relief Techniques', style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              )
+              ),
+        
+              //list view for stress relief techniques
+              SizedBox(
+                height: 300,
+                child: ListView.builder(
+                  itemCount: item.tileItem.length,
+                    scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return ScrollTile(
+                    tile: Tile(title: item.tileItem[index].title, description: item.tileItem[index].description, imagePath: item.tileItem[index].imagePath),
+                    );
+                  },
+                 ),
+              ),
+        
+        
+               // title for recommendations
+        
+               const Text('Recommendations', style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              )
+              ),
+        
+              //list view for recommendations
+              Container(
+                height: 120,
+              ),
+            ],
+          ),
         ),
       )
     );
