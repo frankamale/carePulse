@@ -75,6 +75,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  kommunicate_flutter:
+    dependency: "direct main"
+    description:
+      name: kommunicate_flutter
+      sha256: ca7ae62d60ad22f6eaa5fdec901d4c607f4a6ca42b6346764b3ad8c1183037f3
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.8.1"
   lints:
     dependency: transitive
     description:
