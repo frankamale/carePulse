@@ -2,7 +2,6 @@ import 'package:carepulse/pages/2_Insights.dart';
 import 'package:carepulse/pages/3_today.dart';
 import 'package:carepulse/pages/4_messages.dart';
 import 'package:flutter/material.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -14,9 +13,9 @@ class _HomePageState extends State<HomePage> {
 
   //to store the pages to be displayed in the bottom nav bar
   final List <Widget> _tabs =[
-    Insights(),
-    Today(),
-    Messages()
+    const Insights(),
+    const Today(),
+    const Messages()
   ];
   int _currentIndex = 1;
   @override
@@ -24,16 +23,17 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
-        // title: const Text("CarePulse",
-        //   style: TextStyle(
-        //       color: Colors.black,
-        //       fontWeight: FontWeight.bold,
-        //       fontSize: 30,
-        //
-        //   ),
-        //
-        // ),
+        title: const Text("CarePulse",
+          style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+
+          ),
+
+        ),
         backgroundColor: Colors.transparent,
       ),
 
@@ -155,12 +155,22 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.messenger),
             label: 'Messages',
+            backgroundColor: Colors.red
+
           ),
 
         ],
         backgroundColor: Colors.white,// color for the navigation bars
         iconSize: 30,// size of the icons
         selectedFontSize: 20,
+        selectedIconTheme: IconThemeData(
+          color: Colors.red[900],
+        ),
+        selectedLabelStyle: TextStyle(
+          fontWeight: FontWeight.w500,
+          decorationColor: Colors.red[900],
+          color: Colors.black
+        ),
 
         //to enalbe switchin on the bottom nav
         onTap: (index){

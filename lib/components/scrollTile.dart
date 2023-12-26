@@ -11,7 +11,7 @@ class ScrollTile extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: InkWell(
         child: Container(
-            width: 150,
+            width: 250,
             decoration:  BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
@@ -19,7 +19,8 @@ class ScrollTile extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //title
                   Text(tile.title,
@@ -31,16 +32,27 @@ class ScrollTile extends StatelessWidget {
 
                   //image
                   Center(
-                    child: Image.asset(tile.imagePath,
+                    child: Image.asset(
+                      tile.imagePath,
                     height: 120,
                     ),
                   ),
 
                   //description
 
-                  Text(tile.description,
-                    style: TextStyle(
-                      color: Colors.grey[700]
+                  Expanded(
+                    child: Container(                    
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.grey[100]
+                      ),
+                      child: Center(
+                        child: Text(tile.description,
+                          style: TextStyle(
+                            color: Colors.grey[700]
+                          ),
+                        ),
+                      ),
                     ),
                   )
 

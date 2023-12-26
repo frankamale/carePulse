@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primaryColor: Colors.red, // Set your desired primary color here
+          primaryColor: Colors.red[900], // Set your desired primary color here
           // You can also customize other theme properties as needed
           scaffoldBackgroundColor: Colors.red[50]
         // accentColor, scaffoldBackgroundColor, fontFamily, etc.

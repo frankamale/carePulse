@@ -18,17 +18,17 @@ class _InsightsState extends State<Insights> {
 
     return Scaffold(
 
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Insights',
-          style: TextStyle(
-
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 30
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: const Text('Insights',
+      //     style: TextStyle(
+      //
+      //         color: Colors.black,
+      //         fontWeight: FontWeight.bold,
+      //         fontSize: 30
+      //     ),
+      //   ),
+      // ),
 
       body:  SingleChildScrollView(
         child: Padding(
@@ -45,7 +45,7 @@ class _InsightsState extends State<Insights> {
         
               //listview for nutrition
               SizedBox(
-                height: 300,
+                height: 250,
                 child: ListView.builder(
                   itemCount: item.nutrition.length,
                   scrollDirection: Axis.horizontal,
@@ -66,7 +66,7 @@ class _InsightsState extends State<Insights> {
         
               //list view for stress relief techniques
               SizedBox(
-                height: 300,
+                height: 250,
                 child: ListView.builder(
                   itemCount: item.tileItem.length,
                     scrollDirection: Axis.horizontal,
@@ -88,8 +88,19 @@ class _InsightsState extends State<Insights> {
               ),
         
               //list view for recommendations
-              Container(
-                height: 120,
+              SizedBox(
+                height: 250,
+                child: ListView.builder(
+                  itemCount: item.recommendation.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return ScrollTile(
+                      tile: Tile(title: item.recommendation[index].title,
+                          description: item.recommendation[index].description,
+                          imagePath: item.recommendation[index].imagePath),
+                    );
+                  },
+                ),
               ),
             ],
           ),
