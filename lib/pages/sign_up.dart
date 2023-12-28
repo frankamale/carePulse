@@ -1,0 +1,161 @@
+import 'package:carepulse/models/user%20auth/firebase_auth_services.dart';
+import 'package:carepulse/models/user%20auth/form_container.dart';
+import 'package:carepulse/pages/1_home_page.dart';
+import 'package:carepulse/pages/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+
+  FirebaseAuthService _auth = FirebaseAuthService();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+  @override
+  bool _isLoading = false;
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red[900],
+        centerTitle: true,
+        title: const Text('CarePulse',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+          ),
+        ),
+      ),
+      body:  Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              const Text("Sign Up",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+               FormContainer(
+                controller: _emailController,
+                hintText: 'email',
+                isPasswordField: false,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+               FormContainer(
+                 controller: _usernameController,
+                hintText: 'Username',
+                isPasswordField: false,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+               FormContainer(
+                 controller: _passwordController,
+                hintText: 'password',
+                isPasswordField: true,
+              ),
+
+              const SizedBox(
+                height: 30,
+              ),
+              GestureDetector(
+                onTap: _signUp,
+                child: Container(
+                  width: double.infinity,
+                  height: 45,
+                  decoration: BoxDecoration(
+                      color: Colors.red[900],
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  child:  Center(
+                    child: _isLoading? const CircularProgressIndicator(color: Colors.white,):const Text('Sign up',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Already have an account?",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> const Login()), (route) => false);
+                    },
+                    child: const Text('  Login',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.blue,
+                        )
+                    ),
+                  ),
+                ],
+              )
+
+            ],
+          ),
+        ),
+      ),
+    );
+
+  }
+
+  void _signUp() async{
+    setState(() {
+      _isLoading = true;
+    });
+    String email = _emailController.text;
+    String password = _passwordController.text;
+    String username = _usernameController.text;
+
+    User? user = await _auth.signUpWithEmailAndPassword(password, email);
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (user != null){
+      print('User successfully created');
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+
+    }
+    else{
+      print('Some error occured');
+    }
+  }
+}

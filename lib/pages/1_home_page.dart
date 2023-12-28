@@ -1,7 +1,10 @@
 import 'package:carepulse/pages/2_Insights.dart';
 import 'package:carepulse/pages/3_today.dart';
 import 'package:carepulse/pages/4_messages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'login.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -40,20 +43,20 @@ class _HomePageState extends State<HomePage> {
       //drawer menu
       drawer: Drawer(
         backgroundColor: Colors.red[900],
-        child: const Padding(
-          padding: EdgeInsets.all(12.0),
+        child:  Padding(
+          padding: const EdgeInsets.all(12.0),
 
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               //circular shape for profile photo
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 90,
                 backgroundColor: Colors.white,
               ),
 
 
-              Column(
+              const Column(
 
                 children: [
 
@@ -119,19 +122,25 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
 
-              ListTile(
-                leading: Icon(Icons.logout,
-                  color: Colors.white,
-                ),
-                title: Text("Log Out",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 20
+              GestureDetector(
+                onTap: (){
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>const Login()), (route) => false);
+                },
+                child: const ListTile(
+                  leading: Icon(Icons.logout,
+                    color: Colors.white,
+                  ),
+                  title: Text("Log Out",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 20
+                    ),
                   ),
                 ),
               ),

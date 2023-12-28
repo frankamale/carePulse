@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "410572788236",
+    "project_id": "carepulse-c5ccc",
+    "storage_bucket": "carepulse-c5ccc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410572788236:android:210eb52a2fa7c3fa719429",
+        "android_client_info": {
+          "package_name": "com.example.carepulse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPGeN423Z_ItBLBtTR0n8Lj5ZU53rXwXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410572788236:android:36410f807dd1de65719429",
+        "android_client_info": {
+          "package_name": "com.example.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPGeN423Z_ItBLBtTR0n8Lj5ZU53rXwXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
