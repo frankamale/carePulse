@@ -28,10 +28,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: const Text("CarePulse",
+        title:  Text("CarePulse",
           style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
+              color: Colors.red[900],
+              fontWeight: FontWeight.w900,
               fontSize: 30,
 
           ),

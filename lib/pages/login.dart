@@ -30,16 +30,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red[900],
-        centerTitle: true,
-        title: const Text('CarePulse',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 30,
-        ),
-        ),
-      ),
+      appBar: null,
       body:  Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),

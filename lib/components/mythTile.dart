@@ -45,6 +45,7 @@ class MythScrollTile extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     decoration: BoxDecoration(
                       color: Colors.grey[100],
                       borderRadius: BorderRadius.circular(8)

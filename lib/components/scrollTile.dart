@@ -41,7 +41,8 @@ class ScrollTile extends StatelessWidget {
                   //description
 
                   Expanded(
-                    child: Container(                    
+                    child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: Colors.grey[100]

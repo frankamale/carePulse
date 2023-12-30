@@ -38,6 +38,7 @@ class FirebaseAuthService{
         showToast(message: 'An error occured');
       }
     }
+
     return null;
 
   }

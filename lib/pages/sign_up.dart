@@ -31,16 +31,7 @@ class _SignUpState extends State<SignUp> {
   bool _isLoading = false;
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red[900],
-        centerTitle: true,
-        title: const Text('CarePulse',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-          ),
-        ),
-      ),
+      appBar: null,
       body:  Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
