@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.16"
+  android_alarm_manager_plus:
+    dependency: "direct main"
+    description:
+      name: android_alarm_manager_plus
+      sha256: "84720c8ad2758aabfbeafd24a8c355d8c8dd3aa52b01eaf3bb827c7210f61a91"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.4"
   async:
     dependency: transitive
     description:
@@ -220,10 +228,10 @@ packages:
     dependency: "direct main"
     description:
       name: kommunicate_flutter
-      sha256: ca7ae62d60ad22f6eaa5fdec901d4c607f4a6ca42b6346764b3ad8c1183037f3
+      sha256: "13df000d8da9baa7e45a3cc64c1a6419a1933fd93a02662c9b73664994af7067"
       url: "https://pub.dev"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.2"
   lints:
     dependency: transitive
     description:

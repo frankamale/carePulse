@@ -1,3 +1,4 @@
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:carepulse/components/splash_screen.dart';
 import 'package:carepulse/models/items.dart';
 import 'package:carepulse/pages/1_home_page.dart';
@@ -12,6 +13,7 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await AndroidAlarmManager.initialize();
   runApp( const MaterialApp(
     home: MyApp(),
   ));

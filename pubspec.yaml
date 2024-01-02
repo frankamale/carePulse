@@ -43,6 +43,7 @@ dependencies:
   firebase_auth: ^4.15.3
   firebase_storage: ^11.5.6
   fluttertoast: ^8.2.2
+  android_alarm_manager_plus: ^3.0.4
 
 dev_dependencies:
   flutter_test:
