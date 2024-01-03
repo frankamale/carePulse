@@ -23,16 +23,16 @@ class _MessagesState extends State<Messages> {
 
             Icon(
               Icons.headset_mic_rounded,
-              size: 250,
+              size: 150,
               color: Colors.red[900],
             ),
             Text('Welcome to the support center ..',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 17,
                 color: Colors.grey[700]
               ),
             ),
-            SizedBox(height: 120,),
+            SizedBox(height: 80,),
             Center(
               child: GestureDetector(
                 onTap: ()async {
@@ -52,7 +52,7 @@ class _MessagesState extends State<Messages> {
                       child: Text(
                         'Tap to continue',
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold,
                           color: Colors.red[900]
                         ),

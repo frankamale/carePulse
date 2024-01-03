@@ -32,8 +32,9 @@ class MythScrollTile extends StatelessWidget {
                   ),
                   Text(mythTile.myth,
                     style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+
                     ),
                   ),
 
@@ -64,7 +65,9 @@ class MythScrollTile extends StatelessWidget {
                         ),
                         Text(mythTile.fact,
                           style: TextStyle(
-                              color: Colors.grey[700]
+                              color: Colors.grey[700],
+                            fontSize: 12
+
                           ),
                         )
 

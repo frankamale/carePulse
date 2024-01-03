@@ -1,10 +1,12 @@
+
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:carepulse/components/mythTile.dart';
 import 'package:carepulse/models/items.dart';
 import 'package:carepulse/models/mythTile.dart';
 import 'package:flutter/material.dart';
 
 import '../components/scrollTile.dart';
-import '../components/scrollTile.dart';
+import '../components/services/notificationServices.dart';
 import '../models/tile.dart';
 
 class Today extends StatefulWidget {
@@ -23,17 +25,17 @@ class _TodayState extends State<Today> {
 
         child: Padding(
           padding: EdgeInsets.all(12.0),
-          child: Column(
+          child:  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
               //circle for displaying time
-              const Center(
+                const Center(
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 150,
+                  ),
                 ),
-              ),
 
               //title for tips
              const Text('Tips',
@@ -66,7 +68,7 @@ class _TodayState extends State<Today> {
               ),
 
               SizedBox(
-                height: 265,
+                height: 270,
                 child: ListView.builder(
                   itemCount: item.myths.length,
                   scrollDirection: Axis.horizontal,
