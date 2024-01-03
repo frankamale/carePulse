@@ -50,7 +50,7 @@ class ScrollTile extends StatelessWidget {
                       child: Center(
                         child: Text(tile.description,
                           style: TextStyle(
-                            color: Colors.grey[700]
+                            color: Colors.grey[800]
                           ),
                         ),
                       ),
