@@ -1,17 +1,14 @@
+import 'dart:ffi';
+
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:carepulse/components/services/notificationServices.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hive/hive.dart';
 
-class NotificationHourAndMinute {
-  final int hour;
-  final int minute;
-
-  NotificationHourAndMinute({required this.hour, required this.minute});
-}
+import '../components/data/database.dart';
 
 class MedicationSchedule {
-  List<String> times = [];
-
-
   Future<NotificationHourAndMinute?> pickSchedule(BuildContext context) async {
     TimeOfDay? selectedTime = await showTimePicker(
       context: context,
@@ -39,27 +36,90 @@ class Medication extends StatefulWidget {
 
 class _MedicationState extends State<Medication> {
   final MedicationSchedule medicationSchedule = MedicationSchedule();
+  late final MedicationDb db;
+  late final Box _myBox;
+
+  _MedicationState()
+      : _myBox = Hive.box('myBox'),
+        db = MedicationDb(Hive.box('myBox'));
+
+  //set initial state to initialise box and notification listeners
+  @override
+  void initState() {
+    if (_myBox.get('TIME') == null) {
+      db.initData();
+    } else {
+      db.loadData();
+    }
+    AwesomeNotifications().setListeners(
+        onActionReceivedMethod: onActionReceivedMethod,
+        onNotificationCreatedMethod:
+            onNotificationCreatedMethod,
+        onNotificationDisplayedMethod:
+            onNotificationDisplayedMethod,
+        onDismissActionReceivedMethod:
+            onDismissActionReceivedMethod);
+
+    super.initState();
+  }
 
   Future<void> showPrompt(BuildContext context) async {
-    NotificationHourAndMinute? selectedTime = await medicationSchedule.pickSchedule(context);
+    NotificationHourAndMinute? selectedTime =
+        await medicationSchedule.pickSchedule(context);
 
     if (selectedTime != null) {
       setState(() {
-        medicationSchedule.times.add(
+        db.times.add(
           '${selectedTime.hour.toString().padLeft(2, '0')}:${selectedTime.minute.toString().padLeft(2, '0')}',
         );
       });
+
+      // Show the notification
+      createNotification(selectedTime);
+
       Fluttertoast.showToast(msg: 'Medication time added');
+      db.update();
     } else {
       Fluttertoast.showToast(msg: 'Medication time not set');
     }
   }
 
+  /// Use this method to detect when a new notification or a schedule is created
+  @pragma("vm:entry-point")
+  static Future<void> onNotificationCreatedMethod(
+      ReceivedNotification receivedNotification) async {
+    // Your code goes here
+  }
+
+  /// Use this method to detect every time that a new notification is displayed
+  @pragma("vm:entry-point")
+  static Future<void> onNotificationDisplayedMethod(
+      ReceivedNotification receivedNotification) async {
+    // Your code goes here
+  }
+
+  /// Use this method to detect if the user dismissed a notification
+  @pragma("vm:entry-point")
+  Future<void> onDismissActionReceivedMethod(
+      ReceivedAction receivedAction) async {
+    // Your code goes here
+
+  }
+
+  /// Use this method to detect when the user taps on a notification or action button
+  @pragma("vm:entry-point")
+  Future<void> onActionReceivedMethod(
+      ReceivedAction receivedAction) async {
+    // Your code goes here
+    if (receivedAction.buttonKeyPressed == 'MARK_DONE') {
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           'Schedule Medication',
           style: TextStyle(
@@ -70,10 +130,36 @@ class _MedicationState extends State<Medication> {
         ),
       ),
       body: ListView.builder(
-        itemCount: medicationSchedule.times.length,
+        itemCount: db.times.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(medicationSchedule.times[index]),
+          return Dismissible(
+            key: Key(db.times[index]),
+            direction: DismissDirection.endToStart,
+            onDismissed: (direction) {
+              setState(() {
+                db.times.removeAt(index);
+                db.update();
+              });
+            },
+            background: Container(
+              color: Colors.red,
+              alignment: AlignmentDirectional.centerEnd,
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: ListTile(
+                selectedTileColor: Colors.red[200],
+                title: Text('dose ${index + 1}'),
+                subtitle: Text('Dose set at ${db.times[index]}'),
+              ),
+            ),
           );
         },
       ),

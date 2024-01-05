@@ -6,10 +6,8 @@ import 'package:carepulse/pages/schedule_medication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
-import '../components/notifications.dart';
-import '../components/services/notificationServices.dart';
+import '5_faqs_page.dart';
 import 'login.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,11 +67,7 @@ class _HomePageState extends State<HomePage> {
 
     @pragma("vm:entry-point")
     Future<void> onActionReceivedMethod(ReceivedAction receivedAction) async {
-      print('Notification tapped');
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (_) => NotificationPage()),
-              (route) => false);
+
     }
   }
 
@@ -135,19 +129,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const ListTile(
                     leading: Icon(
-                      Icons.notifications,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      "Notifications",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20),
-                    ),
-                  ),
-                  const ListTile(
-                    leading: Icon(
                       Icons.app_registration_outlined,
                       color: Colors.white,
                     ),
@@ -161,9 +142,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ListTile(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => Medication()));
-
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Medication()));
                     },
                     leading: const Icon(
                       Icons.timelapse_outlined,
@@ -177,12 +160,19 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 20),
                     ),
                   ),
-                  const ListTile(
-                    leading: Icon(
+                  ListTile(
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>  FaqPage()));
+                    },
+                    leading: const Icon(
                       Icons.question_mark_rounded,
                       color: Colors.white,
                     ),
-                    title: Text(
+                    title: const Text(
                       "FAQs",
                       style: TextStyle(
                           color: Colors.white,
@@ -203,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => const Login()),
-                          (route) => false);
+                      (route) => false);
                 },
                 child: const ListTile(
                   leading: Icon(

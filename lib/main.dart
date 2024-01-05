@@ -1,16 +1,21 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:carepulse/components/splash_screen.dart';
-import 'package:carepulse/models/items.dart';
 import 'package:carepulse/pages/1_home_page.dart';
-import 'package:carepulse/pages/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'firebase_options.dart';
 
+
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('myBox');
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -47,12 +52,12 @@ class _MyAppState extends State<MyApp> {
       )
     );
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       theme: ThemeData(
 
           primaryColor: Colors.red[900], // Set your desired primary color here
           // You can also customize other theme properties as needed
-          scaffoldBackgroundColor: Colors.red[50]
+          scaffoldBackgroundColor: Colors.red[50],
           // accentColor, scaffoldBackgroundColor, fontFamily, etc.
           ),
       home: const Splash(
