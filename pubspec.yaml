@@ -51,6 +51,7 @@ dependencies:
   url_launcher: ^6.2.2
   font_awesome_flutter: ^10.6.0
   flutter_slidable: ^3.0.1
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

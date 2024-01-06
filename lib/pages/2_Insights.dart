@@ -40,7 +40,8 @@ class _InsightsState extends State<Insights> {
                     tile: Tile(
                         title: item.nutrition[index].title,
                         description: item.nutrition[index].description,
-                        imagePath: item.nutrition[index].imagePath),
+                        imagePath: item.nutrition[index].imagePath,
+                        link: item.nutrition[index].link),
                   );
                 },
               ),
@@ -64,7 +65,9 @@ class _InsightsState extends State<Insights> {
                     tile: Tile(
                         title: item.tileItem[index].title,
                         description: item.tileItem[index].description,
-                        imagePath: item.tileItem[index].imagePath),
+                        imagePath: item.tileItem[index].imagePath,
+                      link: item.tileItem[index].link
+                    ),
                   );
                 },
               ),
@@ -89,7 +92,9 @@ class _InsightsState extends State<Insights> {
                     tile: Tile(
                         title: item.recommendation[index].title,
                         description: item.recommendation[index].description,
-                        imagePath: item.recommendation[index].imagePath),
+                        imagePath: item.recommendation[index].imagePath,
+                      link: item.recommendation[index].link
+                    ),
                   );
                 },
               ),

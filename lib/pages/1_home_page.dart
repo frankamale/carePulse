@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
     return Column(
       
       children: [
-        SizedBox(height: 40,),
+        const SizedBox(height: 40,),
         const Text(
           "Menu",
           style: TextStyle(
@@ -130,7 +130,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         SizedBox(height: 40,),
-        Divider(height: 10,),
 
         _buildMenuItem(
           icon: FontAwesomeIcons.truckMedical,
@@ -219,29 +218,36 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildLogoutButton() {
-    return  ListTile(
-      onTap: (){
-        FirebaseAuth.instance.signOut();
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const Login(),
+    return  Column(
+      children: [
+        Divider(height: 10,),
+        ListTile(
+          onTap: (){
+            FirebaseAuth.instance.signOut();
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Login(),
+              ),
+                  (route) => false,
+            );
+          },
+          leading: const Icon(
+            Icons.logout,
+            color: Colors.white,
           ),
-              (route) => false,
-        );
-      },
-      leading: const Icon(
-        Icons.logout,
-        color: Colors.white,
-      ),
-      title: const Text(
-        "Log Out",
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.normal,
-          fontSize: 20,
+          title: const Text(
+            "Log Out",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.normal,
+              fontSize: 20,
+            ),
+          ),
         ),
-      ),
+        Divider(height: 10,),
+
+      ],
     );
   }
 

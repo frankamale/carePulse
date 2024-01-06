@@ -5,6 +5,7 @@ import 'package:carepulse/pages/sign_up.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -132,8 +133,18 @@ class _LoginState extends State<Login> {
     });
 
     if (user != null){
+      saveUserData(email, password);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>HomePage()), (route) => false);
       print('User logged in successfully');
     }
   }
+
+  Future<void> saveUserData(String userId, String userEmail) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('userId', userId);
+    prefs.setString('userEmail', userEmail);
+  }
+
 }
+
+

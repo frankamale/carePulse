@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -154,11 +155,18 @@ class _SignUpState extends State<SignUp> {
         'password': password,
         'username': username,
       });
+      saveUserData(email, password, username);
       Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
 
     }
     else{
       print('Some error occured');
     }
+  }
+  Future<void> saveUserData(String userId, String userEmail, String userName) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('userId', userId);
+    prefs.setString('userEmail', userEmail);
+    prefs.setString('userName', userName);
   }
 }

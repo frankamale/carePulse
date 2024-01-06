@@ -33,7 +33,7 @@ class _TodayState extends State<Today> {
                 backgroundColor: Colors.red[900],
                 radius: 150,
                 child: CircleAvatar(
-                  backgroundColor: Colors.grey[300],
+                  backgroundColor: Colors.grey[200],
                   radius: 140,
                   child: Center(
                     child: Column(
@@ -98,7 +98,9 @@ class _TodayState extends State<Today> {
                     tile: Tile(
                         title: item.tips[index].title,
                         description: item.tips[index].description,
-                        imagePath: item.tips[index].imagePath),
+                        imagePath: item.tips[index].imagePath,
+                      link: item.tips[index].link
+                    ),
                   );
                 },
               ),

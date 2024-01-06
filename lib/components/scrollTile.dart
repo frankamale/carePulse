@@ -1,5 +1,6 @@
 import 'package:carepulse/models/tile.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ScrollTile extends StatelessWidget {
   ScrollTile({super.key, required this.tile});
@@ -10,6 +11,10 @@ class ScrollTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: InkWell(
+        splashFactory: InkRipple.splashFactory,
+        onTap: (){
+          _launchURL(Uri.parse(tile.link));
+        },
         child: Container(
             width: 250,
             decoration:  BoxDecoration(
@@ -64,4 +69,12 @@ class ScrollTile extends StatelessWidget {
       ),
     );
   }
+  Future<void> _launchURL(Uri url) async {
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 }
+
