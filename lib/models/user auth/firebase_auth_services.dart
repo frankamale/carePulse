@@ -1,6 +1,7 @@
 
 
 import 'package:carepulse/components/toast.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -13,6 +14,7 @@ class FirebaseAuthService{
 
     try{
       UserCredential credential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+
       return credential.user;
     }
     on FirebaseException  catch(e){

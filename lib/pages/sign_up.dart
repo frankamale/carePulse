@@ -2,6 +2,7 @@ import 'package:carepulse/models/user%20auth/firebase_auth_services.dart';
 import 'package:carepulse/models/user%20auth/form_container.dart';
 import 'package:carepulse/pages/1_home_page.dart';
 import 'package:carepulse/pages/login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -128,6 +129,8 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _signUp() async{
+    final fireStore = FirebaseFirestore.instance;
+
     setState(() {
       _isLoading = true;
     });
@@ -141,8 +144,16 @@ class _SignUpState extends State<SignUp> {
       _isLoading = false;
     });
 
+
     if (user != null){
+
       print('User successfully created');
+
+      fireStore.collection('User_Info').add({
+        'email': email,
+        'password': password,
+        'username': username,
+      });
       Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
 
     }

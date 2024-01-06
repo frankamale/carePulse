@@ -33,6 +33,7 @@ Future main() async {
   runApp(const MaterialApp(
     home: MyApp(),
   ));
+
 }
 
 class MyApp extends StatefulWidget {
@@ -43,6 +44,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(

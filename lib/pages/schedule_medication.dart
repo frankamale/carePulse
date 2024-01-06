@@ -156,8 +156,8 @@ class _MedicationState extends State<Medication> {
               padding: EdgeInsets.all(8.0),
               child: ListTile(
                 selectedTileColor: Colors.red[200],
-                title: Text('dose ${index + 1}'),
-                subtitle: Text('Dose set at ${db.times[index]}'),
+                title: Text('Reminder ${index + 1}'),
+                subtitle: Text('Reminder set at ${db.times[index]}'),
               ),
             ),
           );
