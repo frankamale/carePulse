@@ -1,6 +1,3 @@
-import 'package:carepulse/components/faqTile.dart';
-import 'package:carepulse/models/faqs.dart';
-import 'package:carepulse/models/items.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

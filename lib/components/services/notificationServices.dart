@@ -2,9 +2,6 @@
 
 import 'package:awesome_notifications/awesome_notifications.dart';
 
-import '../../main.dart';
-
-
 int createUniqueId() {
   return DateTime
       .now()
@@ -26,11 +23,12 @@ Future<void> createNotification(
 
   await AwesomeNotifications().createNotification(
       content: NotificationContent(
+        locked: true,
           id: createUniqueId(),
           channelKey: 'Schedule_notification',
-          title: '${Emojis.medical_pill} Morning Dose',
-          body: "Time for medication. please take your pills",
-          notificationLayout: NotificationLayout.Default
+          title: "${Emojis.medical_pill} Invest in your health" ,
+          body: "Is it time for your medicine buddy? We've got your back!${Emojis.emotion_red_heart}",
+          notificationLayout: NotificationLayout.BigText
       ),
       actionButtons: [
         NotificationActionButton(key: 'MARK_DONE', label: 'Mark Done'),

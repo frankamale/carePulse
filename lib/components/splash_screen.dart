@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../pages/login.dart';
 
 class Splash extends StatefulWidget {
 

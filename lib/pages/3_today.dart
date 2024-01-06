@@ -1,4 +1,3 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:carepulse/components/mythTile.dart';
 import 'package:carepulse/models/items.dart';
 import 'package:carepulse/models/mythTile.dart';
@@ -6,7 +5,6 @@ import 'package:carepulse/pages/schedule_medication.dart';
 import 'package:flutter/material.dart';
 
 import '../components/scrollTile.dart';
-import '../components/services/notificationServices.dart';
 import '../models/tile.dart';
 
 class Today extends StatefulWidget {
@@ -52,7 +50,6 @@ class _TodayState extends State<Today> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

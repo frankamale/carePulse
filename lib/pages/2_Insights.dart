@@ -17,7 +17,7 @@ class _InsightsState extends State<Insights> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Padding(
+         child: Padding(
         //title
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -66,8 +66,7 @@ class _InsightsState extends State<Insights> {
                         title: item.tileItem[index].title,
                         description: item.tileItem[index].description,
                         imagePath: item.tileItem[index].imagePath,
-                      link: item.tileItem[index].link
-                    ),
+                        link: item.tileItem[index].link),
                   );
                 },
               ),
@@ -93,8 +92,7 @@ class _InsightsState extends State<Insights> {
                         title: item.recommendation[index].title,
                         description: item.recommendation[index].description,
                         imagePath: item.recommendation[index].imagePath,
-                      link: item.recommendation[index].link
-                    ),
+                        link: item.recommendation[index].link),
                   );
                 },
               ),

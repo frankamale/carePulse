@@ -4,7 +4,6 @@ import 'package:carepulse/pages/3_today.dart';
 import 'package:carepulse/pages/4_messages.dart';
 import 'package:carepulse/pages/schedule_medication.dart';
 import 'package:carepulse/pages/todo_page.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

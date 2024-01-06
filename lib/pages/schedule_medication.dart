@@ -1,7 +1,6 @@
-import 'dart:ffi';
-
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:carepulse/components/services/notificationServices.dart';
+import 'package:carepulse/pages/1_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive/hive.dart';
@@ -53,12 +52,9 @@ class _MedicationState extends State<Medication> {
     }
     AwesomeNotifications().setListeners(
         onActionReceivedMethod: onActionReceivedMethod,
-        onNotificationCreatedMethod:
-            onNotificationCreatedMethod,
-        onNotificationDisplayedMethod:
-            onNotificationDisplayedMethod,
-        onDismissActionReceivedMethod:
-            onDismissActionReceivedMethod);
+        onNotificationCreatedMethod: onNotificationCreatedMethod,
+        onNotificationDisplayedMethod: onNotificationDisplayedMethod,
+        onDismissActionReceivedMethod: onDismissActionReceivedMethod);
 
     super.initState();
   }
@@ -103,15 +99,15 @@ class _MedicationState extends State<Medication> {
   Future<void> onDismissActionReceivedMethod(
       ReceivedAction receivedAction) async {
     // Your code goes here
-
   }
 
   /// Use this method to detect when the user taps on a notification or action button
   @pragma("vm:entry-point")
-  Future<void> onActionReceivedMethod(
-      ReceivedAction receivedAction) async {
+  Future<void> onActionReceivedMethod(ReceivedAction receivedAction) async {
     // Your code goes here
     if (receivedAction.buttonKeyPressed == 'MARK_DONE') {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 
@@ -154,10 +150,16 @@ class _MedicationState extends State<Medication> {
             ),
             child: Padding(
               padding: EdgeInsets.all(8.0),
-              child: ListTile(
-                selectedTileColor: Colors.red[200],
-                title: Text('Reminder ${index + 1}'),
-                subtitle: Text('Reminder set at ${db.times[index]}'),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [BoxShadow(color: Colors.grey)]),
+                child: ListTile(
+                  selectedTileColor: Colors.red[200],
+                  title: Text('Reminder ${index + 1}'),
+                  subtitle: Text('Reminder set at ${db.times[index]}'),
+                  trailing: Icon(Icons.timelapse),
+                ),
               ),
             ),
           );
